@@ -1,0 +1,11 @@
+﻿.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.profilepic {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}

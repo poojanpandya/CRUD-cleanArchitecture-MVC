@@ -1,0 +1,106 @@
+﻿@model IEnumerable<cleanArchitecture.Domain.Models.User>
+@{
+    ViewBag.Title = "IndexSP";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Users</h2>
+    </div>
+    <div class="col-md-6">
+        @Html.ActionLink("Add New", "AddUpdateUser", "Home", null, new { @class = "btn btn-primary buttonAdd" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="divEmployeeList" class="tbl_wrapper" style="margin-top: 15px;">
+            @{int i = 0;}
+            <table id="tblEmployeeList" class="display table table-bordered dataTable table-hover" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>ProfilePic</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    i++;
+            <tr>
+                <td style="text-align:center">@i</td>
+                <td style="text-align:center"><img src=@item.Profilepicture class="profilepic" /></td>
+                <td>@item.Firstname</td>
+                <td>@item.Lastname</td>
+                <td>@item.Email</td>
+                <td>
+
+                    @Html.ActionLink("Edit", "AddUpdateUser", new { id = item.UserId },new { @class = "btn btn-primary" }) 
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.UserId }, new { @class = "btn btn-danger",onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                </td>
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .imageStyle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .buttonAdd {
+        float: right;
+        margin-top: 20px;
+    }
+</style>
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#tblEmployeeList').DataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                });
+            });
+
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

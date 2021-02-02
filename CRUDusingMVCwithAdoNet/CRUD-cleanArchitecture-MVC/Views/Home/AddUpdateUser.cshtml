@@ -1,0 +1,19 @@
+﻿@model cleanArchitecture.Domain.Models.User
+@{
+    ViewBag.Title = "AddUser";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/Customjs/user.js"></script>
+
+<div class="card-header" style="font-size: large;margin-top: 9px;">
+    <i class="fa fa-align-justify"></i> Add User
+</div>
+
+@{ Html.RenderPartial("_UserAddEditPartial", Model);}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
